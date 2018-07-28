@@ -2,6 +2,7 @@ package main
 
 import (
 	"./api"
+	"./helper"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -12,7 +13,8 @@ import (
 const PORT = "8000"
 
 const ENDPOINT_TIMER = "/timer"
-const ENDPOINT_TIMER_STORE = ENDPOINT_TIMER + "/store"
+const ENDPOINT_TIMER_CREATE = ENDPOINT_TIMER + "/create"
+const ENDPOINT_TIMER_UPDATE = ENDPOINT_TIMER + "/update"
 const ENDPOINT_TIMER_GET = ENDPOINT_TIMER + "/get"
 
 const METHOD_POST = "POST"
@@ -23,9 +25,12 @@ const METHOD_POST = "POST"
 func main() {
 	log.Println("Started Interval!")
 
+	helper.CreateDatabase()
+
 	router := mux.NewRouter()
-	router.HandleFunc(ENDPOINT_TIMER_STORE, api.StoreTimer).Methods(METHOD_POST)
+	router.HandleFunc(ENDPOINT_TIMER_CREATE, api.CreateTimer).Methods(METHOD_POST)
+	router.HandleFunc(ENDPOINT_TIMER_UPDATE, api.UpdateTimer).Methods(METHOD_POST)
 	router.HandleFunc(ENDPOINT_TIMER_GET, api.GetTimer).Methods(METHOD_POST)
 
-	log.Fatal(http.ListenAndServe(":"+PORT, router))
+	log.Fatal(http.ListenAndServe(":" + PORT, router))
 }
