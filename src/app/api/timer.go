@@ -1,24 +1,19 @@
-package main
+package api
 
 import (
-	"hash/fnv"
-	"time"
-	"net/http"
+	"../structs"
 	"encoding/json"
+	"hash/fnv"
 	"log"
+	"net/http"
+	"time"
 )
-
-type Timer struct {
-	Id uint32 `json:"id,omitempty"`
-	Timer string `json:"timer"`
-	StoredDate int64 `json:"date,omitempty"`
-}
 
 /**
  * Stores the timer in the database and returns the hash so users only need to use the hash as the url.
  */
-func storeTimer(rw http.ResponseWriter, req *http.Request) {
-	var timer Timer
+func StoreTimer(rw http.ResponseWriter, req *http.Request) {
+	var timer structs.Timer
 	if req.Body == nil {
 		http.Error(rw, "Please send a request body", 400)
 		return
@@ -38,8 +33,8 @@ func storeTimer(rw http.ResponseWriter, req *http.Request) {
 /**
  * Stores the timer in the database and returns the hash so users only need to use the hash as the url.
  */
-func getTimer(rw http.ResponseWriter, req *http.Request) {
-	var timer Timer
+func GetTimer(rw http.ResponseWriter, req *http.Request) {
+	var timer structs.Timer
 	if req.Body == nil {
 		http.Error(rw, "Please send a request body", 400)
 		return

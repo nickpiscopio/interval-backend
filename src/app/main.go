@@ -1,9 +1,10 @@
 package main
 
 import (
-    "log"
-    "net/http"
-    "github.com/gorilla/mux"
+	"./api"
+	"github.com/gorilla/mux"
+	"log"
+	"net/http"
 )
 
 // This is the port that the server starts on.
@@ -22,10 +23,9 @@ const METHOD_POST = "POST"
 func main() {
 	log.Println("Started Interval!")
 
-    router := mux.NewRouter()
-	//router.HandleFunc("/people", GetPeople).Methods("GET")
-	router.HandleFunc(ENDPOINT_TIMER_STORE, storeTimer).Methods(METHOD_POST)
-	router.HandleFunc(ENDPOINT_TIMER_GET, getTimer).Methods(METHOD_POST)
+	router := mux.NewRouter()
+	router.HandleFunc(ENDPOINT_TIMER_STORE, api.StoreTimer).Methods(METHOD_POST)
+	router.HandleFunc(ENDPOINT_TIMER_GET, api.GetTimer).Methods(METHOD_POST)
 
-	log.Fatal(http.ListenAndServe(":" + PORT, router))
+	log.Fatal(http.ListenAndServe(":"+PORT, router))
 }
