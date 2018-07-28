@@ -45,19 +45,16 @@ func Execute(query string) {
  * @param query		The query to execute.
  * @param args		The list of args to execute in the statement
  */
-func ExecuteStatement(query string, args interface{}) {
-	log.Println("query: ", query)
-	log.Println("args: ", args)
+func ExecuteStatement(query string, args ...interface{}) {
 	database, _ := connect()
-	statement, _ := database.Prepare("INSERT INTO TimerTable (id, timer, date_created, date_updated, date_last_used) VALUES (?,?,?,?,?);")
-	//statement, _ := database.Prepare(query)
-	log.Println("statement: ", statement)
-	log.Println("database: ", database)
-	//statement.Exec(933223032, "1234a568",1532810406164,1532810406164,1532810406164)
-	result, error := statement.Exec(args)
+	statement, _ := database.Prepare(query)
+
+	result, error := statement.Exec(args...)
 
 	log.Println("result: ", result)
 	log.Println("error: ", error)
+
+	// TODO: RETURN HERE for error or not.
 
 	database.Close()
 }
