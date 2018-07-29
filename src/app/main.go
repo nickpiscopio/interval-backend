@@ -32,5 +32,5 @@ func main() {
 	router.HandleFunc(ENDPOINT_TIMER_UPDATE, api.UpdateTimer).Methods(METHOD_POST)
 	router.HandleFunc(ENDPOINT_TIMER_GET, api.GetTimer).Methods(METHOD_POST)
 
-	log.Fatal(http.ListenAndServe(":" + PORT, router))
+	log.Fatal(http.ListenAndServe(":"+PORT, router))
 }

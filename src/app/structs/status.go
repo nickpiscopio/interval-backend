@@ -1,6 +1,6 @@
 package structs
 
-type Status struct {
+type Response struct {
 	Code int
-	Message string
+	Body interface{}
 }
