@@ -23,7 +23,7 @@ func GetCreateTable() string {
  * @return The insert query.
  */
 func GetInsert() string {
-	return "INSERT INTO " + TABLE_NAME + " (" + COLUMN_ID + ", " + COLUMN_TIMER + ", " + COLUMN_DATE_CREATED + ", " + COLUMN_DATE_UPDATED + ", " + COLUMN_DATE_LAST_USED + ") VALUES (" + "?," + "?," + "?," + "?," + "?" +");"
+	return "INSERT INTO " + TABLE_NAME + " (" + COLUMN_ID + ", " + COLUMN_TIMER + ", " + COLUMN_DATE_CREATED + ", " + COLUMN_DATE_UPDATED + ", " + COLUMN_DATE_LAST_USED + ") VALUES (" + "?," + "?," + "?," + "?," + "?" + ");"
 }
 
 /**
