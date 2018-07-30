@@ -12,10 +12,32 @@ import (
 )
 
 /**
+ * Gets the timer from it's ID.
+ *
+ * @return The timer from the ID that was specified or an error.
+ */
+func getTimer(id uint32) (string, error) {
+	rows, error := helper.Execute(table.GetTimerPrepare(), id)
+	if error == nil {
+		var timer string
+		// We defer the closing of the rows or else the database will return an error the next time we try to get the next row.
+		// The error would be 'database is locked' if we didn't do this.
+		defer rows.Close()
+		for rows.Next() {
+			rows.Scan(&timer)
+
+			return timer, nil
+		}
+	}
+
+	return "", error
+}
+
+/**
  * Gets the timer in the database.
  */
 func GetTimer(rw http.ResponseWriter, req *http.Request) {
-	var timer1 structs.Timer
+	var timerStruct structs.Timer
 
 	response := new(structs.Response)
 
@@ -26,7 +48,7 @@ func GetTimer(rw http.ResponseWriter, req *http.Request) {
 		json.NewEncoder(rw).Encode(response)
 		return
 	}
-	err := json.NewDecoder(req.Body).Decode(&timer1)
+	err := json.NewDecoder(req.Body).Decode(&timerStruct)
 	if err != nil {
 		response.Code = 400
 		response.Body = err.Error()
@@ -35,16 +57,14 @@ func GetTimer(rw http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	rows, error := helper.Execute(table.GetTimerPrepare(), timer1.Id)
-	if err == nil {
+	timerVal, error := getTimer(timerStruct.Id)
+	if error == nil {
+		timer := new(structs.Timer)
+
+		timer.Timer = timerVal
+
 		response.Code = 200
-
-		var timer string
-		for rows.Next() {
-			rows.Scan(&timer)
-
-			response.Body = timer
-		}
+		response.Body = timer
 
 		json.NewEncoder(rw).Encode(response)
 	} else {
@@ -82,21 +102,34 @@ func CreateTimer(rw http.ResponseWriter, req *http.Request) {
 	date := getTime()
 
 	timer.Id = hash(timer.Timer)
-	timer.DateCreated = date
-	timer.DateUpdated = date
-	timer.DateLastUsed = date
 
-	_, error := helper.ExecuteStatement(table.GetInsert(), timer.Id, timer.Timer, timer.DateCreated, timer.DateUpdated, timer.DateLastUsed)
-	if err == nil {
+	// We want to see if a timer with that ID already exists first.
+	timerVal, error := getTimer(timer.Id)
+	if error == nil && len(timerVal) > 0 {
+		// The timer already exists, so just send back the ID.
+		// We do not create a new timer at this point in time.
 		response.Code = 200
 		response.Body = timer
 
 		json.NewEncoder(rw).Encode(response)
 	} else {
-		response.Code = 400
-		response.Body = error.Error()
+		// The timer doesn't exist, so we are going to store the one we received from request.
+		timer.DateCreated = date
+		timer.DateUpdated = date
+		timer.DateLastUsed = date
 
-		json.NewEncoder(rw).Encode(response)
+		_, error := helper.ExecuteStatement(table.GetInsert(), timer.Id, timer.Timer, timer.DateCreated, timer.DateUpdated, timer.DateLastUsed)
+		if err == nil {
+			response.Code = 200
+			response.Body = timer
+
+			json.NewEncoder(rw).Encode(response)
+		} else {
+			response.Code = 400
+			response.Body = error.Error()
+
+			json.NewEncoder(rw).Encode(response)
+		}
 	}
 }
 
