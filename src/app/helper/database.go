@@ -15,7 +15,6 @@ const DATABASE_NAME = "./Interval.db"
  */
 func CreateDatabase() {
 	_, error := ExecuteStatement(table.GetCreateTable())
-	log.Println("create")
 	if error != nil {
 		log.Println(error)
 	}
