@@ -1,0 +1,110 @@
+{
+	"id": "35b3096b-760a-393f-7c9f-3f979f11b116",
+	"name": "Interval",
+	"description": "",
+	"order": [
+		"0c0e1317-4e26-9bdc-9f17-0733d3541012",
+		"ba1b9df8-33af-7872-3fbe-91be4a210ea5",
+		"97919396-f376-b1c9-e2e0-49b194c9ef02"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1534290306165,
+	"owner": "911807",
+	"public": false,
+	"requests": [
+		{
+			"id": "0c0e1317-4e26-9bdc-9f17-0733d3541012",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8000/timer/get",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "35b3096b-760a-393f-7c9f-3f979f11b116",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Get Timer",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1534290418969,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"id\": 845456209\n}"
+		},
+		{
+			"id": "97919396-f376-b1c9-e2e0-49b194c9ef02",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:8000/timer/create",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "35b3096b-760a-393f-7c9f-3f979f11b116",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Create Timer",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1534290444642,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"timer\": \"eyJuYW1lIjoiTGVncyAmIExvd2VyIEJhY2siLCJpbnRlcnZhbHMiOlt7Im5hbWUiOiJQcmVwIiwiZHVyYXRpb24iOiIxNTAwMCJ9LHsibmFtZSI6IkJpa2UiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoiMjAwMDAifSx7Im5hbWUiOiJKdW1waW5nIEphY2tzIiwiZHVyYXRpb24iOiI2MDAwMCJ9LHsibmFtZSI6IlJlc3QiLCJkdXJhdGlvbiI6IjIwMDAwIn0seyJuYW1lIjoiTGVnIEN1cmwiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoxMjAwMH0seyJuYW1lIjoiTGVnIEV4dGVuc2lvbiIsImR1cmF0aW9uIjoiNjAwMDAifSx7Im5hbWUiOiJSZXN0IiwiZHVyYXRpb24iOiIyMDAwMCJ9LHsibmFtZSI6IlN0cmFpZ2h0IExlZyBEZWFkIExpZnQiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoiMjAwMDAifSx7Im5hbWUiOiJBbHRlcm5hdGluZyBPdXRlciwgSW5uZXIgU3F1YXQgSnVtcCAoTk9UIFRPTyBIQVJEKSIsImR1cmF0aW9uIjoiNjAwMDAifSx7Im5hbWUiOiJSZXN0IiwiZHVyYXRpb24iOiIyMDAwMCJ9LHsibmFtZSI6IkNhbGYgUmFpc2UiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoiMjAwMDAifSx7Im5hbWUiOiJTdHJhaWdodCBMZWcgRGVhZCBMaWZ0IiwiZHVyYXRpb24iOiI2MDAwMCJ9LHsibmFtZSI6IlJlc3QiLCJkdXJhdGlvbiI6IjIwMDAwIn0seyJuYW1lIjoiWSBMdW5nZSIsImR1cmF0aW9uIjoiNjAwMDAifSx7Im5hbWUiOiJSZXN0IiwiZHVyYXRpb24iOiIyMDAwMCJ9LHsibmFtZSI6Ikx5aW5nIFNpZGUgTGVnIFJhaXNlIChMZWZ0KSIsImR1cmF0aW9uIjoiNjAwMDAifSx7Im5hbWUiOiJSZXN0IiwiZHVyYXRpb24iOiIyMDAwMCJ9LHsibmFtZSI6Ikx5aW5nIFNpZGUgTGVnIFJhaXNlIChSaWdodCkiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoiMjAwMDAifSx7Im5hbWUiOiJMeWluZyBIaXAgRXh0ZW5zaW9uIiwiZHVyYXRpb24iOjYwMDAwfSx7Im5hbWUiOiJSZXN0IiwiZHVyYXRpb24iOiIyMDAwMCJ9LHsibmFtZSI6IlN0cmFpZ2h0IExlZyBEZWFkIExpZnQiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoiMjAwMDAifSx7Im5hbWUiOiJBbHRlcm5hdGluZyBTaWRlIEx1bmdlIiwiZHVyYXRpb24iOiI2MDAwMCJ9LHsibmFtZSI6IkxlZyBDdXJsIiwiZHVyYXRpb24iOiI2MDAwMCJ9LHsibmFtZSI6IlJlc3QiLCJkdXJhdGlvbiI6MTIwMDB9LHsibmFtZSI6IkxlZyBFeHRlbnNpb24iLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoxMjAwMH0seyJuYW1lIjoiTGVnIEN1cmwiLCJkdXJhdGlvbiI6IjYwMDAwIn0seyJuYW1lIjoiUmVzdCIsImR1cmF0aW9uIjoxMjAwMH0seyJuYW1lIjoiTGVnIEV4dGVuc2lvbiIsImR1cmF0aW9uIjoiNjAwMDAifSx7Im5hbWUiOiJSZXN0IiwiZHVyYXRpb24iOiIyMDAwMCJ9LHsibmFtZSI6IkJpa2UiLCJkdXJhdGlvbiI6IjMwMDAwMCJ9LHsibmFtZSI6IiIsImR1cmF0aW9uIjowfV0sInRvdGFsRHVyYXRpb24iOjE3MDMwMD24\"\n}"
+		},
+		{
+			"id": "ba1b9df8-33af-7872-3fbe-91be4a210ea5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8000/timer/update",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "35b3096b-760a-393f-7c9f-3f979f11b116",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Update Timer",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1534290433104,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"id\":355445164}"
+		}
+	]
+}
